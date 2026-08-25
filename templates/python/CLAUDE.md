@@ -102,7 +102,7 @@ Write immediately to memory/MEMORY.md without waiting for confirmation.
 Use this format:
 
 ---
-## Session [date] [stack]
+## Session [date] Python
 
 ### Prompts (verbatim, in order)
 - [prompt 1]
@@ -133,11 +133,6 @@ Use this format:
 
 ## Stack-Specific Conventions
 
-===============================================================
-PYTHON VERSION — replace everything below this line with the
-TypeScript version when using the typescript template
-===============================================================
-
 ### Stack
 - Backend: FastAPI + Uvicorn
 - Templates: Jinja2 served through FastAPI
@@ -151,8 +146,10 @@ TypeScript version when using the typescript template
 - templates/index.html — base HTML template
 
 ### To Start the Server
+```bash
 pip install -r requirements.txt
 uvicorn api.main:app --reload --port 8000
+```
 
 ### Conventions
 - All business logic in the backend — keep templates thin
@@ -160,3 +157,4 @@ uvicorn api.main:app --reload --port 8000
 - All file I/O through files/file_io.py
 - Type hints on all function signatures
 - Docstrings on all public functions
+- snake_case for all function and variable names

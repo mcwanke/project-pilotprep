@@ -123,6 +123,39 @@ not an oversight.
 
 ---
 
+## Build Status
+
+**Overall Progress: 57% complete** (4 of 7 build sections done)
+
+### Completed
+- **CLAUDE.md** (2026-08-25) — root context, behavior rules, memory structure
+- **PROJECT_SPEC.md** (2026-08-25, updated 2026-08-25) — build specification with skeleton architecture updates
+- **memory/** (2026-08-25) — MEMORY.md (index) and ERRORS.md (failed approaches log)
+- **docs/** all 7 files (2026-08-25):
+  - TEMPLATE_CLAUDE.md
+  - TEMPLATE_session_log.md
+  - PROMPT_session_review.md
+  - TEMPLATE_SKELETON_target.md
+  - STRUCTURE_skeleton.md (universal skeleton definitions)
+  - SKELETON_python_fastapi.md (language-specific implementation guide)
+  - SKELETON_typescript_express.md (language-specific implementation guide)
+- **templates/python/** (2026-08-25) — complete FastAPI template with 12 files and skeleton code
+  - CLAUDE.md (Python-specific), README.md, requirements.txt, config.yaml
+  - memory/MEMORY.md (placeholder), plan/ files (3 placeholders)
+  - api/main.py (FastAPI skeleton with 6 route handlers)
+  - db/database.py (SQLite skeleton with 8 database operations)
+  - files/file_io.py (File I/O skeleton with 13 operations)
+  - templates/index.html (Jinja2 template skeleton)
+  - Empty directories: data/, inputs/, outputs/, logs/, tests/
+
+### Not Started
+- **README.md** — human-facing repo introduction (build from scratch)
+- **templates/typescript/** — Express template environment with skeleton files
+- **scripts/** — gen_session.sh, gen_session_log.sh, gen_session_review.sh, review_compiler.py
+- **sessions/** — empty folder for generated practice runs
+
+---
+
 ## Template Environments
 
 Two template environments exist. Both cover the same three problem shapes:

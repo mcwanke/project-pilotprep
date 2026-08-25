@@ -44,9 +44,13 @@ not an oversight.
 │   ├── MEMORY.md                   — session log, written by Claude Code
 │   └── ERRORS.md                   — failed approaches log
 ├── docs/
-│   ├── TEMPLATE_CLAUDE.md          — source document for template CLAUDE.mds
-│   ├── TEMPLATE_session_log.md     — session log template for practice runs
-│   └── PROMPT_session_review.md    — scoring prompt piped to claude -p
+│   ├── TEMPLATE_CLAUDE.md                   — source document for template CLAUDE.mds
+│   ├── TEMPLATE_session_log.md              — session log template for practice runs
+│   ├── TEMPLATE_SKELETON_target.md          — template for skeleton implementation guides
+│   ├── PROMPT_session_review.md             — scoring prompt piped to claude -p
+│   ├── STRUCTURE_skeleton.md                — universal skeleton structure and functions
+│   ├── SKELETON_python_fastapi.md           — Python/FastAPI skeleton implementation
+│   └── SKELETON_typescript_express.md       — TypeScript/Express skeleton implementation
 ├── scripts/
 │   ├── gen_session.sh              — creates a new session folder
 │   ├── gen_session_log.sh          — compiles session log from artifacts
@@ -71,7 +75,12 @@ not an oversight.
 │   │   │   └── file_io.py          — file I/O skeleton
 │   │   ├── templates/
 │   │   │   └── index.html          — base Jinja2 template skeleton
-│   │   └── data/                   — empty, for sample input files
+│   │   ├── data/                   — empty, for sample input files
+│   │   ├── inputs/                 — empty, for input data files (CSV, JSON, etc.)
+│   │   ├── outputs/                — empty, where file I/O functions write results
+│   │   ├── logs/                   — empty, created at runtime by logging system
+│   │   ├── tests/                  — empty, for test files (optional)
+│   │   └── config.yaml             — application configuration (logging, db, api, outputs)
 │   └── typescript/                 — TypeScript/Node template environment
 │       ├── CLAUDE.md               — interview session Claude Code context
 │       ├── README.md               — quick reference for this template
@@ -90,7 +99,12 @@ not an oversight.
 │       │   │   └── database.ts     — SQLite logic skeleton
 │       │   └── files/
 │       │       └── fileIO.ts       — file I/O skeleton
-│       └── data/                   — empty, for sample input files
+│       ├── data/                   — empty, for sample input files
+│       ├── inputs/                 — empty, for input data files (CSV, JSON, etc.)
+│       ├── outputs/                — empty, where file I/O functions write results
+│       ├── logs/                   — empty, created at runtime by logging system
+│       ├── tests/                  — empty, for test files (optional)
+│       └── config.yaml             — application configuration (logging, db, api, outputs)
 └── sessions/                       — generated practice runs
     └── prep_001_python/            — example session folder (generated)
         ├── session_log.md          — candidate reflection, written after session
@@ -147,6 +161,117 @@ a working scaffold rather than a blank file.
 - All file I/O through the file_io skeleton — no raw file handling elsewhere
 - Templates are never modified during a practice session — gen_session.sh
   copies them; the originals stay clean
+
+---
+
+## Configuration and Logging System
+
+### config.yaml
+Each template includes a `config.yaml` file that is NOT a stub—it contains actual configuration
+values. It gets copied as part of the template and is used at runtime when code runs in a session 
+folder. Configuration sections include:
+
+- **logging:** level (INFO/DEBUG/ERROR), output file path, format string
+- **database:** SQLite database file path
+- **api:** host and port for web framework templates
+- **outputs:** directory where file I/O functions write results
+
+See docs/STRUCTURE_functions.md for complete config schema and defaults.
+
+### Logging Format
+All modules log via standardized functions with consistent formatting:
+```
+2026-08-25T14:32:15.123456 | module.function_name | log message
+```
+Logging level controls verbosity: INFO (all operations), DEBUG (structured detail), ERROR (errors only).
+Default logging level is DEBUG for interview prep environments.
+
+### outputs/ Folder
+All file I/O write operations (CSV, JSON, markdown exports) write to the `outputs/` folder defined 
+in config.yaml. This keeps generated files organized separately from code and makes them easy to 
+review after a session.
+
+---
+
+## Skeleton Folder and File Structure
+
+Every template environment contains a consistent folder structure with universal folders and 
+language-specific code folders. This section describes both.
+
+### Universal Folders and Files
+
+These exist in EVERY template, regardless of language or purpose:
+
+```
+template/
+├── CLAUDE.md                   — interview session context and behavior rules
+├── README.md                   — quick reference for this template
+├── config.yaml                 — application configuration (actual values, not a stub)
+├── memory/
+│   └── MEMORY.md               — placeholder, auto-written by Claude Code at END SESSION
+├── plan/
+│   ├── scratch.md              — empty, candidate fills in during session
+│   ├── plan.md                 — empty, candidate fills in during session
+│   └── WORKORDER.md            — empty, Claude Code generates this
+├── inputs/                     — empty, for input data files (CSV, JSON, etc.)
+├── outputs/                    — empty, created at runtime, where file I/O writes results
+├── logs/                       — empty, created at runtime by logging system
+└── tests/                      — empty, for test files (optional per template)
+```
+
+### Language/Framework-Specific Folders
+
+These vary based on what the skeleton does. The current templates are web/API skeletons:
+
+**Python/FastAPI example:**
+```
+├── requirements.txt            — Python dependencies
+├── api/
+│   └── main.py                 — FastAPI entry point and route handlers
+├── db/
+│   └── database.py             — SQLite database operations
+├── files/
+│   └── file_io.py              — file I/O operations
+├── templates/
+│   └── index.html              — Jinja2 template skeleton
+└── data/                       — empty, for sample input files
+```
+
+**TypeScript/Express example:**
+```
+├── package.json                — Node.js dependencies
+├── tsconfig.json               — TypeScript configuration
+├── src/
+│   ├── api/
+│   │   └── server.ts           — Express entry point and route handlers
+│   ├── db/
+│   │   └── database.ts         — SQLite database operations
+│   └── files/
+│       └── fileIO.ts           — file I/O operations
+└── data/                       — empty, for sample input files
+```
+
+### Skeleton File Purposes
+
+All code skeleton files are STUBS ONLY — they contain function definitions with docstrings and 
+comments, but NO implementation code. The candidate fills in implementations during the session.
+
+**Why stubs?**
+- Remove setup friction (no blank files to start with)
+- Demonstrate expected function signatures and patterns
+- Constrain scope (focus on solving the interview problem, not framework setup)
+- Scaffold the solution space without pre-solving it
+
+### Skeleton Documentation
+
+Each language/framework has a dedicated skeleton guide:
+
+- **docs/STRUCTURE_skeleton.md** — Universal skeleton structure and function categories (applies to ALL templates)
+- **docs/SKELETON_python_fastapi.md** — Python/FastAPI specific implementation details
+- **docs/SKELETON_typescript_express.md** — TypeScript/Express specific implementation details
+- **docs/TEMPLATE_SKELETON_target.md** — Template for creating new skeleton implementation guides
+
+When adding a new template type, create a new SKELETON_*.md file following the TEMPLATE pattern.
 
 ---
 
@@ -425,6 +550,12 @@ All three plan/ files (scratch.md, plan.md, WORKORDER.md) ship as empty
 files with a single comment line explaining their purpose. They are
 populated during the session.
 
+### config.yaml and output directories
+Unlike skeleton code files, `config.yaml` is a configuration file with actual values (not function 
+stubs). It gets copied as part of the template and is used at runtime when code runs in a session 
+folder. The `outputs/` and `logs/` directories are created empty and populated at runtime by the 
+application.
+
 ---
 
 ## Adding a New Template
@@ -433,9 +564,11 @@ To add a new template environment (e.g. C#):
 1. Create templates/csharp/ following the same structure as python/ and
    typescript/
 2. Write a CLAUDE.md for that stack using TEMPLATE_CLAUDE.md as the source
-3. Write skeleton files for api, db, and files
-4. Add "csharp" as a valid argument in gen_session.sh
-5. No other changes needed — gen_session_log.sh and gen_session_review.sh
+3. Create skeleton files based on relevant categories in docs/STRUCTURE_skeleton.md
+4. Create config.yaml with applicable sections (logging always, database/api/outputs as needed)
+5. Create empty outputs/ directory
+6. Add "csharp" as a valid argument in gen_session.sh
+7. No other changes needed — gen_session_log.sh and gen_session_review.sh
    are stack-agnostic
 
 ---
@@ -447,13 +580,15 @@ When handed this document, build in this order:
 1. Root files: CLAUDE.md (already written — do not overwrite),
    README.md (see README section below — build from scratch)
 2. memory/ folder with empty MEMORY.md and ERRORS.md
-3. docs/ files: TEMPLATE_CLAUDE.md and TEMPLATE_session_log.md already
-   exist — do not overwrite. Build PROMPT_session_review.md from the prompt in
-   this spec.
+3. docs/ files: TEMPLATE_CLAUDE.md, TEMPLATE_session_log.md, PROMPT_session_review.md,
+   TEMPLATE_SKELETON_target.md, STRUCTURE_skeleton.md, SKELETON_python_fastapi.md, and
+   SKELETON_typescript_express.md already exist — do not overwrite.
 4. templates/python/ — all folders, CLAUDE.md (Python stack variant),
-   requirements.txt, skeleton files, empty plan/ files, empty data/
+   requirements.txt, config.yaml, skeleton files, empty plan/ files, empty data/,
+   empty inputs/, empty outputs/, empty logs/, empty tests/
 5. templates/typescript/ — all folders, CLAUDE.md (TypeScript stack variant),
-   package.json, tsconfig.json, skeleton files, empty plan/ files, empty data/
+   package.json, tsconfig.json, config.yaml, skeleton files, empty plan/ files,
+   empty data/, empty inputs/, empty outputs/, empty logs/, empty tests/
 6. scripts/ — gen_session.sh, gen_session_log.sh, gen_session_review.sh,
    review_compiler.py
 7. sessions/ — empty folder only, no contents

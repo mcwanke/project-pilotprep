@@ -35,15 +35,18 @@ current task. Note anything worth fixing elsewhere at the end. Do not touch it.
 
 ## Session Workflow
 
-This is the required sequence. Do not skip or reorder steps.
+**If resuming a prior session:** Read `memory/MEMORY.md` first to understand what was completed, then continue with the workflow below.
 
-1. **Read plan/scratch.md** — understand my initial notes before anything else
-2. **Read plan/plan.md** — understand my intended approach
-3. **Generate WORKORDER** — produce a detailed implementation plan and write
+**Starting a new session:** Follow this sequence. Do not skip or reorder steps.
+
+1. **Read plan/session_context.md** — understand the interview prompt and context
+2. **Read plan/scratch.md** — understand my initial notes
+3. **Read plan/plan.md** — understand my intended approach
+4. **Generate WORKORDER** — produce a detailed implementation plan and write
    it to plan/WORKORDER.md. Wait for my approval before writing any code.
-4. **Execute** — implement the WORKORDER in focused chunks. After each chunk,
+5. **Execute** — implement the WORKORDER in focused chunks. After each chunk,
    report what was done before moving to the next.
-5. **END SESSION** — when I say this, execute the END SESSION procedure below.
+6. **END SESSION** — when I say this, execute the END SESSION procedure below.
 
 ---
 
@@ -102,7 +105,7 @@ Write immediately to memory/MEMORY.md without waiting for confirmation.
 Use this format:
 
 ---
-## Session [date] [stack]
+## Session [date] TypeScript
 
 ### Prompts (verbatim, in order)
 - [prompt 1]

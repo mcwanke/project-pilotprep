@@ -35,9 +35,7 @@ current task. Note anything worth fixing elsewhere at the end. Do not touch it.
 
 ## Session Workflow
 
-**If resuming a prior session:** Read `memory/MEMORY.md` first to understand what was completed, then continue with the workflow below.
-
-**Starting a new session:** Follow this sequence. Do not skip or reorder steps.
+This is the required sequence. Do not skip or reorder steps.
 
 1. **Read plan/session_context.md** — understand the interview prompt and context
 2. **Read plan/scratch.md** — understand my initial notes

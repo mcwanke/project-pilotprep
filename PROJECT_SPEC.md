@@ -66,6 +66,8 @@ not an oversight.
 │   │   ├── plan/                   — candidate thinking artifacts
 │   │   │   ├── scratch.md          — empty, quick notes during session
 │   │   │   ├── plan.md             — empty, candidate approach before prompting
+│   │   │   ├── session_context.md  — interview prompt and session context
+│   │   │   ├── initial_prompt.md   — standardized prompt for starting session
 │   │   │   └── WORKORDER.md        — empty, Claude Code generates this
 │   │   ├── api/
 │   │   │   └── main.py             — FastAPI entry point skeleton
@@ -91,6 +93,8 @@ not an oversight.
 │       ├── plan/                   — candidate thinking artifacts
 │       │   ├── scratch.md          — empty, quick notes during session
 │       │   ├── plan.md             — empty, candidate approach before prompting
+│       │   ├── session_context.md  — interview prompt and session context
+│       │   ├── initial_prompt.md   — standardized prompt for starting session
 │       │   └── WORKORDER.md        — empty, Claude Code generates this
 │       ├── src/
 │       │   ├── api/
@@ -114,6 +118,8 @@ not an oversight.
         ├── plan/
         │   ├── scratch.md          — candidate notes from session
         │   ├── plan.md             — candidate plan from session
+        │   ├── session_context.md  — interview prompt and session context (from template)
+        │   ├── initial_prompt.md   — standardized prompt (from template)
         │   └── WORKORDER.md        — Claude Code generated plan from session
         ├── api/                    — code files from session (Python example)
         ├── db/
@@ -125,11 +131,12 @@ not an oversight.
 
 ## Build Status
 
-**Overall Progress: 57% complete** (4 of 7 build sections done)
+**Overall Progress: 71% complete** (5 of 7 build sections done)
 
 ### Completed
 - **CLAUDE.md** (2026-08-25) — root context, behavior rules, memory structure
 - **PROJECT_SPEC.md** (2026-08-25, updated 2026-08-25) — build specification with skeleton architecture updates
+- **README.md** (2026-08-25) — human-facing repo introduction for visitors and hiring managers
 - **memory/** (2026-08-25) — MEMORY.md (index) and ERRORS.md (failed approaches log)
 - **docs/** all 7 files (2026-08-25):
   - TEMPLATE_CLAUDE.md
@@ -149,7 +156,6 @@ not an oversight.
   - Empty directories: data/, inputs/, outputs/, logs/, tests/
 
 ### Not Started
-- **README.md** — human-facing repo introduction (build from scratch)
 - **templates/typescript/** — Express template environment with skeleton files
 - **scripts/** — gen_session.sh, gen_session_log.sh, gen_session_review.sh, review_compiler.py
 - **sessions/** — empty folder for generated practice runs
@@ -322,11 +328,13 @@ Code. Never open the template folder directly for a practice run.
 
 ### During a session
 The required sequence inside a session is:
-1. Write notes in plan/scratch.md
-2. Write approach in plan/plan.md
-3. Prompt Claude Code to generate plan/WORKORDER.md — wait for approval
-4. Execute the WORKORDER in chunks
-5. Say END SESSION when done
+1. Copy interview prompt into plan/session_context.md (if not already provided)
+2. Paste the initial prompt from plan/initial_prompt.md into Claude Code
+3. Write notes in plan/scratch.md
+4. Write approach in plan/plan.md
+5. Prompt Claude Code to generate plan/WORKORDER.md — wait for approval
+6. Execute the WORKORDER in chunks
+7. Say END SESSION when done
 
 ### Ending a session
 Claude Code auto-writes memory/MEMORY.md at END SESSION — no confirmation

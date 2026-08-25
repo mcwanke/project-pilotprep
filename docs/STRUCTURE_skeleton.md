@@ -26,6 +26,8 @@ template/
 ├── plan/
 │   ├── scratch.md                  — empty, quick notes during session
 │   ├── plan.md                     — empty, candidate approach before prompting
+│   ├── session_context.md          — interview prompt and session context
+│   ├── initial_prompt.md           — standardized prompt for starting session
 │   └── WORKORDER.md                — empty, Claude Code generates this
 ├── inputs/                         — empty, for input data files during session
 ├── outputs/                        — empty, where file I/O functions write results
@@ -38,6 +40,10 @@ template/
 
 - **memory/**: Stores session context. Auto-written at END SESSION.
 - **plan/**: Candidate thinking artifacts. Populated during session per workflow.
+  - `scratch.md` and `plan.md`: Candidate fills in during session
+  - `session_context.md`: Interview prompt and session context (pre-filled, candidate doesn't modify)
+  - `initial_prompt.md`: Standardized initial prompt for Claude Code (pre-filled, candidate doesn't modify)
+  - `WORKORDER.md`: Claude Code generates this during session
 - **inputs/**: Input data files (CSV, JSON, etc.) for the session to process.
 - **outputs/**: Generated output files from file I/O operations.
 - **logs/**: Application logs created at runtime by logging functions.

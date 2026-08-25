@@ -1,26 +1,7 @@
 # Session Log — [prep_00X_stack] — [date]
 
 ## The Prompt
-[Paste the interview prompt exactly as given]
-
----
-
-## My Initial Read
-[What did you notice first? What was your instinct about the problem?
-What felt unclear or ambiguous before you started?]
-
----
-
-## What is the Why? What Questions Should I Be Asking Here?
-[Before jumping to a solution — what problem is actually being solved?
-What would a good engineer ask before touching a keyboard? What context
-or clarification would you want from the interviewer if you could ask?]
-
----
-
-## My Plan
-[What approach did you choose and why? What did you explicitly decide
-not to do and why? This should reflect plan/plan.md from the session.]
+See plan/session_context.md
 
 ---
 
@@ -29,12 +10,21 @@ See plan/WORKORDER.md
 
 ---
 
+## How I Directed the AI
+
+What questions did you actually ask the AI? Where did it suggest something
+that didn't work and you pushed back? Where did you stay in control vs. 
+let it run ahead? This should reflect the prompt/response pairs in the 
+Claude Code session log.
+
+---
+
 ## How the Session Went
-[Narrative of the full 45-minute practice run. Where did you gain ground?
-Where did you lose time? Where did the plan hold and where did it break?
-How did you direct Claude Code — did you stay in control or did it run
-ahead of you? What decisions did you make mid-session that weren't in
-the plan?]
+
+Narrative of the full 45-minute practice run. What did you complete vs. 
+what didn't you finish? Where did you gain ground, where did you lose time? 
+Where did the plan hold and where did it break? How did you direct Claude 
+Code — did you stay in control or did it run ahead of you?
 
 ---
 
@@ -43,14 +33,16 @@ See memory/MEMORY.md
 
 ---
 
-## What I Would Do Next
-[If you had more time, what would you build next? Be specific.]
+## What I Would Harden Before Production
+
+What actually broke or surprised you during coding? What's fragile or 
+assumed in what you built? What would you address before this went 
+anywhere real?
 
 ---
 
-## What I Would Harden Before Production
-[What's fragile, missing, or assumed in what you built? What would
-you want to address before this went anywhere real?]
+## What I Would Do Next
+[If you had more time, what would you build next? Be specific.]
 
 ---
 

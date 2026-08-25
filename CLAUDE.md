@@ -56,7 +56,7 @@ flagging it first.
 
 **Session logs structure:**
 - `memory/MEMORY.md` — index with one-line summary per session
-- `memory/sessions/YYYYMMDD_sessionname.md` — individual session logs
+- `memory/sessions/YYYYMMDD_HHMM_sessionname.md` — individual session logs (HHMM in 24-hour format)
 - `memory/ERRORS.md` — failed approaches log
 
 **END SESSION:** When I say "END SESSION" —
@@ -67,11 +67,17 @@ flagging it first.
    - Decisions made
    - Assumptions or risks flagged
    - Next session priorities
-   - Prompts issued this session (in order, verbatim)
+   - Prompt/work pairs (one entry per prompt/response in the session):
+     ---
+     Prompt: <verbatim prompt text>
+     Work: <summary of what was proposed/worked on>
+     ---
 2. Wait for my confirmation before writing
-3. Write to `memory/sessions/YYYYMMDD_sessionname.md`
+3. Write to `memory/sessions/YYYYMMDD_HHMM_sessionname.md` (HHMM in 24-hour format, e.g., 1430 for 2:30 PM)
 4. Update `memory/MEMORY.md` with a one-line pointer to the new session
 5. Remind me to commit to GitHub
+
+**Important:** Prompt/work pairs must be written every time, never omitted or summarized. These pairs are the backbone of the session log for later review and analysis.
 
 Maintain `memory/ERRORS.md`. When an approach fails more than twice, propose
 logging it and wait for confirmation. Check `memory/ERRORS.md` before
@@ -85,7 +91,7 @@ See PROJECT_SPEC.md for full detail. Key directories:
 
 - `templates/` — reusable interview environments, never modified during sessions
 - `sessions/` — generated practice runs, one folder per run
-- `scripts/` — gen_session.sh and gen_session_log.sh
+- `scripts/` — gen_session.sh, gen_session_log.sh, gen_session_review.sh, review_compiler.py
 - `docs/` — session log template and reference docs
 - `memory/` — session context, not gitignored in this repo
 

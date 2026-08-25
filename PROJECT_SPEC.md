@@ -131,10 +131,10 @@ not an oversight.
 
 ## Build Status
 
-**Overall Progress: 71% complete** (5 of 7 build sections done)
+**Overall Progress: 100% complete** (7 of 7 build sections done)
 
 ### Completed
-- **CLAUDE.md** (2026-08-25) — root context, behavior rules, memory structure
+- **CLAUDE.md** (2026-08-25, updated 2026-08-25) — root context, behavior rules, memory structure; updated prompt/work pair capture format
 - **PROJECT_SPEC.md** (2026-08-25, updated 2026-08-25) — build specification with skeleton architecture updates
 - **README.md** (2026-08-25) — human-facing repo introduction for visitors and hiring managers
 - **memory/** (2026-08-25) — MEMORY.md (index) and ERRORS.md (failed approaches log)
@@ -154,11 +154,17 @@ not an oversight.
   - files/file_io.py (File I/O skeleton with 13 operations)
   - templates/index.html (Jinja2 template skeleton)
   - Empty directories: data/, inputs/, outputs/, logs/, tests/
-
-### Not Started
-- **templates/typescript/** — Express template environment with skeleton files
-- **scripts/** — gen_session.sh, gen_session_log.sh, gen_session_review.sh, review_compiler.py
-- **sessions/** — empty folder for generated practice runs
+- **templates/typescript/** (2026-08-25) — complete Express template with skeleton files (6 directories, 14 files)
+  - CLAUDE.md (TypeScript-specific), README.md, package.json, tsconfig.json, config.yaml
+  - memory/MEMORY.md (placeholder), plan/ files (3 placeholders)
+  - src/api/server.ts, src/db/database.ts, src/files/fileIO.ts (skeleton stubs)
+  - Empty directories: data/, inputs/, outputs/, logs/, tests/
+- **scripts/** (2026-08-25, completed 2026-08-25):
+  - gen_session.sh (creates new session folders from templates)
+  - gen_session_log.sh (compiles session log from artifacts)
+  - gen_session_review.sh (runs AI review on completed session)
+  - review_compiler.py (converts JSON review to formatted markdown)
+- **sessions/** (2026-08-25) — empty folder for generated practice runs
 
 ---
 
@@ -337,10 +343,25 @@ The required sequence inside a session is:
 7. Say END SESSION when done
 
 ### Ending a session
-Claude Code auto-writes memory/MEMORY.md at END SESSION — no confirmation
-step. This is intentional: time is short, the output is scoped to the
-session folder, and the auto-write behavior is itself a demonstration
-artifact.
+When you say END SESSION, Claude Code proposes a structured summary with:
+- Worked on, Completed, In progress sections
+- Decisions made, Assumptions/risks flagged
+- Next session priorities
+- **Prompt/work pairs** — one entry per prompt/response in the session:
+  ```
+  ---
+  Prompt: <verbatim prompt text>
+  Work: <summary of what was proposed/worked on>
+  ---
+  ```
+
+Wait for confirmation, then Claude Code auto-writes memory/MEMORY.md with this
+content — no second confirmation step. This is intentional: time is short,
+the output is scoped to the session folder, and the auto-write behavior
+is itself a demonstration artifact.
+
+**Prompt/work pairs must be written every time, never omitted or summarized.**
+These pairs are the backbone of the session log for later review and analysis.
 
 ### After a session
 1. Run gen_session_log.sh to compile the session log:

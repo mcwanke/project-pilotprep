@@ -46,7 +46,7 @@ not an oversight.
 ├── docs/
 │   ├── TEMPLATE_CLAUDE.md          — source document for template CLAUDE.mds
 │   ├── TEMPLATE_session_log.md     — session log template for practice runs
-│   └── review_prompt.md            — scoring prompt piped to claude -p
+│   └── PROMPT_session_review.md    — scoring prompt piped to claude -p
 ├── scripts/
 │   ├── gen_session.sh              — creates a new session folder
 │   ├── gen_session_log.sh          — compiles session log from artifacts
@@ -233,7 +233,7 @@ The session log references them; it does not replace them.
 ### gen_session_review.sh
 **Input:** session folder name — e.g. "prep_001_python"
 **Behavior:**
-1. Read the review prompt from docs/review_prompt.md
+1. Read the review prompt from docs/PROMPT_session_review.md
 2. Read sessions/[name]/plan/WORKORDER.md
 3. Read sessions/[name]/session_log.md
 4. Read sessions/[name]/memory/MEMORY.md
@@ -448,7 +448,7 @@ When handed this document, build in this order:
    README.md (see README section below — build from scratch)
 2. memory/ folder with empty MEMORY.md and ERRORS.md
 3. docs/ files: TEMPLATE_CLAUDE.md and TEMPLATE_session_log.md already
-   exist — do not overwrite. Build review_prompt.md from the prompt in
+   exist — do not overwrite. Build PROMPT_session_review.md from the prompt in
    this spec.
 4. templates/python/ — all folders, CLAUDE.md (Python stack variant),
    requirements.txt, skeleton files, empty plan/ files, empty data/

@@ -54,6 +54,11 @@ Session context lives in `memory/`. Read `memory/MEMORY.md` at the start of
 every session before doing any work. Never contradict a logged decision without
 flagging it first.
 
+**Session logs structure:**
+- `memory/MEMORY.md` — index with one-line summary per session
+- `memory/sessions/YYYYMMDD_sessionname.md` — individual session logs
+- `memory/ERRORS.md` — failed approaches log
+
 **END SESSION:** When I say "END SESSION" —
 1. Propose a structured summary in this format:
    - Worked on
@@ -64,8 +69,9 @@ flagging it first.
    - Next session priorities
    - Prompts issued this session (in order, verbatim)
 2. Wait for my confirmation before writing
-3. Write to `memory/MEMORY.md`
-4. Remind me to commit to GitHub
+3. Write to `memory/sessions/YYYYMMDD_sessionname.md`
+4. Update `memory/MEMORY.md` with a one-line pointer to the new session
+5. Remind me to commit to GitHub
 
 Maintain `memory/ERRORS.md`. When an approach fails more than twice, propose
 logging it and wait for confirmation. Check `memory/ERRORS.md` before

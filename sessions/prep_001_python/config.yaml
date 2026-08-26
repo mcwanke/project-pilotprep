@@ -1,0 +1,14 @@
+logging:
+  level: DEBUG
+  format: "{asctime} | {funcName} | {message}"
+  output_file: ./logs/app.log
+
+database:
+  path: ./data/database.db
+
+api:
+  host: 127.0.0.1
+  port: 8000
+
+outputs:
+  path: ./outputs

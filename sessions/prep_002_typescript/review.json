@@ -1,0 +1,57 @@
+{
+  "session": "prep_002_typescript",
+  "date": "2026-08-26",
+  "stack": "typescript",
+  "scoring": {
+    "problem_decomposition": {
+      "score": 8,
+      "max": 10,
+      "feedback": "Excellent upfront planning with explicit assumptions, clear problem restatement, and deliberate scope decisions. WORKORDER demonstrates systematic breakdown into 9 discrete implementation steps with Phase 1/2+ boundary clearly drawn. Could have been more thorough on edge cases identified during decomposition (though some appear in risks section)."
+    },
+    "question_quality": {
+      "score": 8,
+      "max": 10,
+      "feedback": "Asked exactly the right clarifying questions before building: confirmation ID format (INS-XXXX vs type-prefixed), ID generation strategy (max query vs alternatives), address validation scope (permissive vs strict). These are the questions a real engineer needs answered before committing to implementation. Minor: could have asked about specific testing approach earlier."
+    },
+    "ai_direction": {
+      "score": 8,
+      "max": 10,
+      "feedback": "Candidate explicitly noted 'directed' approach and 'working together' rather than being directed by the AI. Better query structuring reduced pushback in this session. Approved plans before execution. Reflection is clear but thin on specific examples—would benefit from concrete instances where they redirected or maintained control in real-time."
+    },
+    "scope_judgment": {
+      "score": 9,
+      "max": 10,
+      "feedback": "Very strong. Deliberate Phase 1/2+ split made upfront (basic CRUD + validation in phase 1; address lookup, concurrency hardening, auth, tests deferred). Finished working implementation of Chunks 1-2 (9 DB/API steps) in 45 minutes rather than attempting everything and finishing nothing. Demonstrates excellent judgment under time pressure."
+    },
+    "production_thinking": {
+      "score": 7,
+      "max": 10,
+      "feedback": "Good awareness of fragility: concurrency risk on ID generation, date format assumptions (ISO 8601), timezone handling deferred, empty DB edge case identified, JSON response format assumptions documented. Candidate self-reflects 'would review and address open gaps in phase2+ planning,' showing growth mindset. Could be more exhaustive on other edge cases (deletion, concurrent reads, validation error cases)."
+    },
+    "communication_clarity": {
+      "score": 8,
+      "max": 10,
+      "feedback": "Session logs are well-structured with clear headers, specific completions vs. in-progress tracking, documented decisions with rationale, and risk mitigation strategies. Reflection reads clearly but is concise/thin on detail—could flesh out specific instances and examples rather than high-level summaries. Technical clarity is strong."
+    },
+    "overall": {
+      "score": 8,
+      "max": 10
+    }
+  },
+  "reviewer_perspectives": {
+    "vp_engineering": {
+      "feedback": "Strong candidate. Breaks down complex problems systematically, makes deliberate scope decisions under pressure, and directs AI tools rather than being directed by them. Delivered working code in 45 minutes instead of incomplete attempt. Shows leadership thinking: plans before coding, asks clarifying questions, documents assumptions. Stays focused on Phase 1 scope.",
+      "would_hire": true
+    },
+    "software_architect": {
+      "feedback": "Good architectural judgment. Scope/phase boundaries are crisp and well-justified. Documented assumptions and identified key risks (concurrency, timezone, validation depth). Production thinking is solid but not exhaustive—candidate acknowledges edge case review as area for improvement. Shows growth mindset and willingness to iterate on process. Would be stronger with more detailed edge case pre-analysis.",
+      "would_hire": true
+    }
+  },
+  "verdict": {
+    "is_this_person_awesome": "Yes. Demonstrates strong engineering leadership: clear thinking under time pressure, effective problem decomposition, deliberate scope judgment, and effective use of AI tools as collaborator rather than replacement. Finished coherent working solution rather than rushed incomplete one.",
+    "strongest_signal": "Scope judgment and problem decomposition. Candidate made explicit Phase 1/2+ boundary decisions upfront, documented 9 assumptions and risks before coding, and delivered working implementation of Phase 1 in 45 minutes. This shows the kind of deliberate thinking that scales in leadership roles.",
+    "biggest_gap": "Edge case and production hardening thinking could be more exhaustive. Identified concurrency, timezone, and validation scope gaps, but missed opportunity to call out other failure modes (deletion, error cascades, validation edge cases). Candidate acknowledges this area for growth.",
+    "one_thing_to_improve": "When reflecting on session, provide specific examples of AI direction and control rather than summary statements. 'I stayed in control' is less useful than 'When the AI suggested X, I pushed back because Y and redirected toward Z.' Concrete instances make leadership thinking visible."
+  }
+}

@@ -1,0 +1,14 @@
+logging:
+  level: DEBUG
+  format: "{timestamp} | {source_function} | {message}"
+  output_file: ./logs/app.log
+
+database:
+  path: ./data/database.db
+
+api:
+  host: 127.0.0.1
+  port: 8006
+
+outputs:
+  path: ./outputs
